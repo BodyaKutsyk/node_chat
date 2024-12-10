@@ -1,28 +1,28 @@
-const authContoller = require('../controllers/auth.controller');
+const authController = require('../controllers/auth.controller');
 const { authMiddleware } = require('../middlewares/authMiddleware');
 const Router = require('express').Router;
 const { catchError } = require('../utils/catchError');
 
 const authRoute = Router();
 
-authRoute.post('/registration', catchError(authContoller.register));
-authRoute.post('/login', catchError(authContoller.login));
-authRoute.post('/logout', catchError(authContoller.logout));
-authRoute.post('/send-reset', catchError(authContoller.sendResetPassword));
-authRoute.get('/reset/:resetToken', catchError(authContoller.resetPassword));
-authRoute.get('/activate/:token', catchError(authContoller.activate));
-authRoute.get('/refresh', catchError(authContoller.refresh));
+authRoute.post('/registration', catchError(authController.register));
+authRoute.post('/login', catchError(authController.login));
+authRoute.post('/logout', catchError(authController.logout));
+authRoute.post('/send-reset', catchError(authController.sendResetPassword));
+authRoute.get('/reset/:resetToken', catchError(authController.resetPassword));
+authRoute.get('/activate/:token', catchError(authController.activate));
+authRoute.get('/refresh', catchError(authController.refresh));
 
 authRoute.post(
   '/send-reset-email',
   authMiddleware,
-  catchError(authContoller.sendResetEmail),
+  catchError(authController.sendResetEmail),
 );
 
 authRoute.get(
   '/reset-email/:resetToken',
   authMiddleware,
-  catchError(authContoller.resetEmail),
+  catchError(authController.resetEmail),
 );
 
 module.exports = { authRoute };

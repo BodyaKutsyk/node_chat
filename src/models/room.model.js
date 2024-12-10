@@ -18,6 +18,6 @@ const Room = sequelize.define(
 );
 
 Room.belongsTo(User);
-User.hasOne(Room);
+User.hasMany(Room);
 
 module.exports = { Room };

@@ -18,7 +18,7 @@ const create = async (req, res) => {
   const possibleRoom = await Room.findOne({ where: { name } });
 
   if (possibleRoom) {
-    throw ApiError.badRequest('This room is already exists');
+    throw ApiError.badRequest('This room already exists');
   }
 
   const newRoom = await roomsService.create({ name, userId });
@@ -44,7 +44,7 @@ const remove = async (req, res) => {
   }
 
   await roomsService.remove(id);
-  res.sendStatus(201);
+  res.sendStatus(204);
 };
 
 const update = async (req, res) => {
@@ -62,7 +62,7 @@ const update = async (req, res) => {
   }
 
   await roomsService.update({ id, name });
-  res.sendStatus(201);
+  res.sendStatus(204);
 };
 
 module.exports = {

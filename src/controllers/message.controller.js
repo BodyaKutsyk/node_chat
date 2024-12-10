@@ -20,7 +20,7 @@ const getAllMessages = async (req, res) => {
   const { roomId } = req.params;
 
   if (!roomId) {
-    throw ApiError.badRequest('The id form the room is not provided!');
+    throw ApiError.badRequest('The id for the room is not provided!');
   }
 
   const messages = await messagesService.getAllByRoom(roomId);

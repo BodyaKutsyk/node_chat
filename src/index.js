@@ -42,7 +42,9 @@ app.use(errorMiddleware);
 
 const server = app.listen(process.env.PORT || 3006, () => {
   /* eslint-disable no-console */
-  console.log(`Server is running on ${process.env.BASE}`);
+  console.log(
+    `Server is running on http://localhost:${process.env.PORT || 3006}`,
+  );
 });
 
 const wss = new WebSocketServer({ server });

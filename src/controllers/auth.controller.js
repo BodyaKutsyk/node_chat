@@ -32,8 +32,8 @@ const register = async (req, res) => {
   }
 
   const hashedPassword = await bcrypt.hash(
-    'password',
-    +process.env.HASH_ROUNDS,
+    password,
+    parseInt(process.env.HASH_ROUNDS, 10),
   );
   const newUser = { name, email, password: hashedPassword };
 
